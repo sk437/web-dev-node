@@ -7,7 +7,10 @@ module.exports = (app) => {
         res.json(movies);
     };
     const createMovie = (req, res) => {
-        const movie = req.body;
+        const movie = {
+            _id: (new Date()).getTime() + '',
+            ...req.body,
+        }
         movies = [...movies, movie];
         res.json(movies);
     }
